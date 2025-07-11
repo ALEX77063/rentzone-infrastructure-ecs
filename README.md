@@ -16,6 +16,18 @@ The infrastructure deploys a complete, production-ready web application stack wi
 - **Route 53** DNS records
 - **Auto Scaling** for ECS services
 
+![RentZone ECS Architecture](./architecture-diagram.png)
+
+### Architecture Flow
+
+1. **User Request**: Users access the application via Route 53 DNS resolution
+2. **Load Balancing**: Application Load Balancer distributes traffic across ECS tasks
+3. **Container Orchestration**: ECS Fargate runs containerized applications in private subnets
+4. **Database Access**: Applications connect to RDS database in isolated data subnets
+5. **Internet Access**: NAT Gateways provide secure outbound internet access for private resources
+6. **Configuration**: Environment variables are securely loaded from S3 bucket
+7. **Container Images**: ECS pulls application images from ECR repository
+
 ## Prerequisites
 
 Before deploying this infrastructure, you need:
